@@ -1,0 +1,9 @@
+deploy:
+  name: k8s-deployment
+  namespace: test
+  branch: test
+  hosts: test.example.com
+  url: app
+  replicas: 1
+  repository: thebadalov/k8s-deployment
+  tag: main-3
