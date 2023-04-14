@@ -16,7 +16,7 @@ You can see Minikube K8S cluster, ArgoCD, Prod and Test ENV pod/svc info;
 - Github CI & Argo CD opensource tool was used for CI / CD process.
 
 You can check Github CI processes;
-![CIDR Range Tablo](img/github\actions.png)
+![CIDR Range Tablo](img/github-actions.png)
 
 Prod and Test Argo CD processes;
 ![CIDR Range Tablo](img/argocd-prod.png)
