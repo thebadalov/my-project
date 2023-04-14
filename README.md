@@ -35,4 +35,4 @@ Second WAY for Prod ENV
 ---------------------
 NOT
 ---------------------
-The purpose of using Jenkins was due to the port export problem I had in Argocd. Argocd is accessible via Load Balancer Service, not Node Port for access. Therefore, the port can be exported only with ingress. For this, I made the CI/CD structure from Jenkins to trigger over localhost on the same machine by using Jenkins in addition to the Prod environment.
+The purpose of using Jenkins was due to the port export problem I had in Argocd. Argocd is accessible via Load Balancer Service, not Node Port for access. Therefore, the port can be exported only with ingress dns yaml. Also I cannot trigger from Github CI to Argo CD. For this, I made the CI/CD structure from Jenkins to trigger over localhost on the same machine by using Jenkins in addition to the Prod environment.
