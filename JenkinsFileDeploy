@@ -1,0 +1,42 @@
+pipeline{
+    environment{
+        String namespace = "production"
+        String brandName = "hello-world-app"
+        String hostName = "chart-example.local"
+        String service = "my-project-service"
+        String workerReplica = "1"
+        String image = "thebadalov/k8s-deployment"
+        String tag2 = '''$tag'''
+        String name= "my-project"
+        String gitOrigin="git@github.com:thebadalov/my-project.git"
+    }
+    agent any
+    stages{
+        stage ('Checkout'){
+            steps{  
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'd31c6f13-e1d9-4b4b-8965-cff2e6f91581', url: "${gitOrigin}"]]])
+            }
+        }
+        withCredentials([usernamePassword(credentialsId: 'argocd', passwordVariable: 'argopasswd', usernameVariable: 'argouser')]) {
+          stage ('Helm Deploy'){
+              steps{
+                  script{
+                      sh"""
+                        argocd login localhost:80 --grpc-web --username $argouser --password "$argopasswd"
+                        argocd app set prod -p deploy.tag=${tag} && argocd --grpc-web app sync prod --force && argocd --grpc-web app wait prod --health --timeout 400
+                      """
+                  }
+              }
+          }
+        }
+        stage ('Rollout Status') {
+            steps{
+                script{  
+                    sh """
+                        kubectl rollout status deployment $name-deployment -n ${namespace};
+                    """
+                }
+            }
+        }
+    }
+}
