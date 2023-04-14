@@ -6,4 +6,4 @@ deploy:
   url: app
   replicas: 1
   repository: thebadalov/k8s-deployment
-  tag: #TAG
+  tag: main-3
