@@ -4,6 +4,10 @@ First WAY for Test ENV
 ---------------------
 The project is a POC study and consists of the deployment model of the netjs application as end2end to the test and production namespaces installed on minikube k8s.
 - EC2 server installed on AWS.
+
+You can see EC2 instance info;
+![CIDR Range Tablo](img/ec2.png)
+
 - Minikube, docker, k8s, argocd installations on the server have been completed.
 - Github CI & Argo CD opensource tool was used for CI / CD process.
 - It's set to trigger when push to Github test and prod(main) branches in CI step.
