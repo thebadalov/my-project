@@ -33,4 +33,4 @@ jobs:
         context: .
         file: Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_REGISTRY }}:github-${{ github.run_id }}
+        tags: ${{ secrets.DOCKER_REGISTRY }}:github-V${{ github.run_id }}
