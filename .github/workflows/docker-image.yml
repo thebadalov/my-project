@@ -33,4 +33,4 @@ jobs:
         context: .
         file: Dockerfile
         push: true
-        tags: thebadalov/k8s-deployment:main-3
+        tags: ${{ secrets.DOCKER_REGISTRY }}:github-V${{ github.run_id }}
