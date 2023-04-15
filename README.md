@@ -21,5 +21,6 @@ Prod and Test Argo CD processes;
 ![CIDR Range Tablo](img/argocd-test.png)
 
 - It's set to trigger when push to Github test and prod(main) branches in CI step.
+- Automatic CI step will be triggered when push command comes with the same line of code from both prod and test branch.
 - Helm chart structure was used with Argo, the k8s deployment model.
 - The private docker hub repository was used for the image repository and the Secret information was kept on the cluster.
