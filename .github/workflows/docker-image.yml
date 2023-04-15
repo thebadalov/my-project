@@ -31,6 +31,9 @@ jobs:
       id: cat
       run: echo "::set-output name=result_tag::$(cat helm/main.yaml | grep -o 'github[^,]*')"
     
+    - name: Print Result
+      run: echo "The Latest Tag is ${{ steps.cat.outputs.result_tag }}"
+    
     - name: Build and push Docker image
       uses: docker/build-push-action@v2
       with:
